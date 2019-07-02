@@ -1,0 +1,15 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: paleturquoise;
+    width: 100%;
+
+}
+
+button {
+    margin: 0 auto;
+    background: navy;
+    color: white;
+}
