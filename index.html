@@ -8,8 +8,35 @@
     <link rel="stylesheet" href="../Psychic-Game/assets/css/reset.css">
     <link rel="stylesheet" href="../Psychic-Game/assets/css/styls.css">
     <link rel="javascript" href="../Psychic-Game/assets/javascript/game.js">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
+
+    <script>
+        $(document).ready(function () {
+        
+            var wins = 0;
+            var losses = 0;
+
+            $("#main-button").on("click", function(){
+                var randomNum = Math.floor(Math.random * 10) + 1;
+                var userGuess = prompt("Pick A Number Between 1 and 10!");
+                if (userGuess === randomNum) {
+                    wins++;
+                    alert("You Guessed Correctly! You Have Won " + wins + " times!");
+
+                }
+
+                else {
+                    losses++;
+                    alert("You Guessed Incorectly! You Have Lost " + losses + " Times!");
+                    
+                }
+            })
+
+        });    
+        
+    </script>
     <div class="jumbotron" style="text-align: center">
             <h1 class="display-4">Welcome To My Psychic Game!</h1>
             <hr>
