@@ -11,41 +11,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-
     <script>
-        $("document").ready(function () {
-        
-            var wins = 0;
-            var losses = 0;
-            var guessesRemaining = 9;
-            var letterGuess = "";
-
-            $("#guesses-remaining").on("keydown", function(){
-                guessesRemaining--;
-            });
-
-            function randomString() {
-                var chars = "ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
-                var randomstring = '';
-                var string_length = 1;
-                for (var i=0; i<string_length; i++) {
-                    var rnum = Math.floor(Math.random() * chars.length);
-                    randomstring += chars.substring(rnum,rnum+1);
-            }
-
-
-
-            if (letterGuess == randomstring) {
-                wins++;
-            }
-
-            else {
-                $("current-guesses").append(randomstring);
-
-            }
-            }   
-        });
-        
+        var letters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+        var wins = 0;
+        var losses = 0;
+        var userGuess = document.onkeypress();
+        var randomGuess = 
     </script>
     <div class="jumbotron" style="text-align: center">
         <h1 class="display-4">Welcome To My Psychic Game!</h1>
