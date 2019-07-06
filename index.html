@@ -13,38 +13,47 @@
 <body>
 
     <script>
-        $(document).ready(function () {
+        $("document").ready(function () {
         
             var wins = 0;
             var losses = 0;
+            var guessesRemaining = 9;
+            var letterGuess = "";
 
-            $("#main-button").on("click", function(){
-                var randomNum = Math.floor(Math.random * 10) + 1;
-                var userGuess = prompt("Pick A Number Between 1 and 10!");
-                if (userGuess === randomNum) {
-                    wins++;
-                    alert("You Guessed Correctly! You Have Won " + wins + " times!");
+            $("#guesses-remaining").on("keydown", function(){
+                guessesRemaining--;
+            });
 
-                }
+            function randomString() {
+                var chars = "ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+                var randomstring = '';
+                var string_length = 1;
+                for (var i=0; i<string_length; i++) {
+                    var rnum = Math.floor(Math.random() * chars.length);
+                    randomstring += chars.substring(rnum,rnum+1);
+            }
 
-                else {
-                    losses++;
-                    alert("You Guessed Incorectly! You Have Lost " + losses + " Times!");
-                    
-                }
-            })
 
-        });    
+
+            if (letterGuess == randomstring) {
+                wins++;
+            }
+
+            else {
+                $("current-guesses").append(randomstring);
+
+            }
+            }   
+        });
         
     </script>
     <div class="jumbotron" style="text-align: center">
-            <h1 class="display-4">Welcome To My Psychic Game!</h1>
-            <hr>
-        </div>
-        <button id="main-button">
-            Click Here To Begin!
-        </button>
-        
+        <h1 class="display-4">Welcome To My Psychic Game!</h1>
+        <h3>Choose a letter to start!</h3>
+        <h3 id="wins">Wins: </h3>
+        <h3 id="losses">Losses: </h3>
+        <h3 id="guesses-remaining">Guesses Remaining: </h3>
+        <h3 id="current-guesses">Your Guesses: </h3>      
     </div>
 </body>
 </html>
