@@ -28,15 +28,26 @@
         var guessesRemaining = 10;
         var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
         var randomGuess = letters[Math.floor(Math.random() * 26)];
-        
-        function newGame() {
-            document.onkeyup = function (event) {
-                var userGuess = event.key;
+
+        // function that upon win/loss generates a new random guess
+        function reset() {
+            // generate a new number
+            guessesRemaining = 10;
+            $("#current-guesses").text("Your Guesses: ");
+            newNumber();
+        }
+
+        function newNumber() {
+            randomGuess = letters[Math.floor(Math.random() * 26)];
+        }
+
+        document.onkeyup = function game(event) {
+            var userGuess = event.key;
             
-             {
             if (userGuess === randomGuess) {
                 wins++;
                 $("#wins").text("Wins: " + wins);
+                reset();
             }
             // figure out how to reset the function upon win
             else if (userGuess != randomGuess && guessesRemaining > 0) {
@@ -45,10 +56,12 @@
                 $("#current-guesses").append(userGuess + ",  ");
             }
 
-            else {
+            else if (userGuess != randomGuess && guessesRemaining === 0) {
                 losses++;
                 $("#losses").text("Losses: " + losses);
-            // figure out how to reset the function upon loss
+                $("#guesses-remaining").text("Guesses Remaining: " + guessesRemaining);
+                // figure out how to reset the function upon loss
+                reset();
             }
             console.log("RANDOM GUESS:", randomGuess);
             console.log("USERGUESS:", userGuess);
@@ -56,9 +69,6 @@
             console.log("L's:", losses);
             console.log("GUESSES REMAINING:", guessesRemaining);
         }
-        }
-        }
-        newGame.call();
     </script>
 </body>
 
